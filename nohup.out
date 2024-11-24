@@ -378,3 +378,845 @@ INFO 11-20 12:29:19 gpu_executor.py:117] Maximum concurrency for 8192 tokens per
 [rank0]:     raise ValueError(
 [rank0]: ValueError: The model's max seq len (8192) is larger than the maximum number of tokens that can be stored in KV cache (4656). Try increasing `gpu_memory_utilization` or decreasing `max_model_len` when initializing the engine.
 [rank0]:[W1120 12:29:20.394607331 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:7: LangChainDeprecationWarning: Importing HuggingFaceEmbeddings from langchain.embeddings is deprecated. Please replace deprecated imports:
+
+>> from langchain.embeddings import HuggingFaceEmbeddings
+
+with new imports of:
+
+>> from langchain_community.embeddings import HuggingFaceEmbeddings
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+/home/lixy/RAG/retrievers/bm25_retriever.py:5: LangChainDeprecationWarning: Importing BM25Retriever from langchain.retrievers is deprecated. Please replace deprecated imports:
+
+>> from langchain.retrievers import BM25Retriever
+
+with new imports of:
+
+>> from langchain_community.retrievers import BM25Retriever
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.retrievers import BM25Retriever
+/home/lixy/RAG/retrievers/faiss_retriever.py:23: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
+  self.embeddings  = HuggingFaceEmbeddings(
+No sentence-transformers model found with name ./pre_train_model/m3e-large. Creating a new one with mean pooling.
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.716 seconds.
+Prefix dict has been built successfully.
+1220
+8178
+8785
+data load ok
+faissretriever load ok
+bm25 load ok
+tfidf load ok
+INFO 11-22 22:24:10 config.py:1350] Downcasting torch.float32 to torch.float16.
+INFO 11-22 22:24:10 config.py:698] Defaulting to use mp for distributed inference
+INFO 11-22 22:24:10 llm_engine.py:169] Initializing an LLM engine (v0.5.1) with config: model='/home/lixy/.cache/modelscope/hub/qwen/Qwen-7B-Chat', speculative_config=None, tokenizer='/home/lixy/.cache/modelscope/hub/qwen/Qwen-7B-Chat', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, rope_scaling=None, rope_theta=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.float16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=2, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None), seed=0, served_model_name=/home/lixy/.cache/modelscope/hub/qwen/Qwen-7B-Chat, use_v2_block_manager=False, enable_prefix_caching=False)
+WARNING 11-22 22:24:11 tokenizer.py:126] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+Traceback (most recent call last):
+  File "/home/lixy/RAG/run.py", line 177, in <module>
+    llm = ChatLLM(qwen7)
+  File "/home/lixy/RAG/vllm_model.py", line 54, in __init__
+    self.model = LLM(model=model_path,
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/entrypoints/llm.py", line 149, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/engine/llm_engine.py", line 414, in from_engine_args
+    engine = cls(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/engine/llm_engine.py", line 243, in __init__
+    self.model_executor = executor_class(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/executor/distributed_gpu_executor.py", line 25, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/executor/executor_base.py", line 42, in __init__
+    self._init_executor()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/executor/multiproc_gpu_executor.py", line 48, in _init_executor
+    error_on_invalid_device_count_status()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/utils.py", line 852, in error_on_invalid_device_count_status
+    raise RuntimeError(
+RuntimeError: The number of CUDA devices has changed since the first call to torch.cuda.device_count(). This is not allowed and may result in undefined behavior. Please check out https://github.com/vllm-project/vllm/issues/6056 to find the first call to torch.cuda.device_count() and defer it until the engine is up. Or you can set CUDA_VISIBLE_DEVICES to the GPUs you want to use.
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:7: LangChainDeprecationWarning: Importing HuggingFaceEmbeddings from langchain.embeddings is deprecated. Please replace deprecated imports:
+
+>> from langchain.embeddings import HuggingFaceEmbeddings
+
+with new imports of:
+
+>> from langchain_community.embeddings import HuggingFaceEmbeddings
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+/home/lixy/RAG/retrievers/bm25_retriever.py:5: LangChainDeprecationWarning: Importing BM25Retriever from langchain.retrievers is deprecated. Please replace deprecated imports:
+
+>> from langchain.retrievers import BM25Retriever
+
+with new imports of:
+
+>> from langchain_community.retrievers import BM25Retriever
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.retrievers import BM25Retriever
+/home/lixy/RAG/retrievers/faiss_retriever.py:23: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
+  self.embeddings  = HuggingFaceEmbeddings(
+No sentence-transformers model found with name ./pre_train_model/m3e-large. Creating a new one with mean pooling.
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.550 seconds.
+Prefix dict has been built successfully.
+1220
+8178
+8785
+data load ok
+faissretriever load ok
+bm25 load ok
+tfidf load ok
+INFO 11-22 22:57:01 config.py:1350] Downcasting torch.float32 to torch.float16.
+INFO 11-22 22:57:01 config.py:698] Defaulting to use mp for distributed inference
+INFO 11-22 22:57:01 llm_engine.py:169] Initializing an LLM engine (v0.5.1) with config: model='/home/lixy/.cache/modelscope/hub/qwen/Qwen-7B-Chat', speculative_config=None, tokenizer='/home/lixy/.cache/modelscope/hub/qwen/Qwen-7B-Chat', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, rope_scaling=None, rope_theta=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.float16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=2, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None), seed=0, served_model_name=/home/lixy/.cache/modelscope/hub/qwen/Qwen-7B-Chat, use_v2_block_manager=False, enable_prefix_caching=False)
+WARNING 11-22 22:57:01 tokenizer.py:126] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+INFO 11-22 22:57:03 selector.py:153] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
+INFO 11-22 22:57:03 selector.py:53] Using XFormers backend.
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:7: LangChainDeprecationWarning: Importing HuggingFaceEmbeddings from langchain.embeddings is deprecated. Please replace deprecated imports:
+
+>> from langchain.embeddings import HuggingFaceEmbeddings
+
+with new imports of:
+
+>> from langchain_community.embeddings import HuggingFaceEmbeddings
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+/home/lixy/RAG/retrievers/bm25_retriever.py:5: LangChainDeprecationWarning: Importing BM25Retriever from langchain.retrievers is deprecated. Please replace deprecated imports:
+
+>> from langchain.retrievers import BM25Retriever
+
+with new imports of:
+
+>> from langchain_community.retrievers import BM25Retriever
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.retrievers import BM25Retriever
+[1;36m(VllmWorkerProcess pid=406497)[0;0m INFO 11-22 22:57:07 selector.py:153] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
+[1;36m(VllmWorkerProcess pid=406497)[0;0m INFO 11-22 22:57:07 selector.py:53] Using XFormers backend.
+[1;36m(VllmWorkerProcess pid=406497)[0;0m INFO 11-22 22:57:08 multiproc_worker_utils.py:215] Worker ready; awaiting tasks
+INFO 11-22 22:57:10 utils.py:741] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=406497)[0;0m INFO 11-22 22:57:10 utils.py:741] Found nccl from library libnccl.so.2
+INFO 11-22 22:57:10 pynccl.py:63] vLLM is using nccl==2.20.5
+[1;36m(VllmWorkerProcess pid=406497)[0;0m INFO 11-22 22:57:10 pynccl.py:63] vLLM is using nccl==2.20.5
+INFO 11-22 22:57:14 custom_all_reduce_utils.py:202] generating GPU P2P access cache in /home/lixy/.config/vllm/gpu_p2p_access_cache_for_2,3.json
+[1;36m(VllmWorkerProcess pid=406497)[0;0m INFO 11-22 22:57:20 custom_all_reduce_utils.py:232] reading GPU P2P access cache from /home/lixy/.config/vllm/gpu_p2p_access_cache_for_2,3.json
+INFO 11-22 22:57:20 custom_all_reduce_utils.py:232] reading GPU P2P access cache from /home/lixy/.config/vllm/gpu_p2p_access_cache_for_2,3.json
+INFO 11-22 22:57:21 selector.py:153] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
+INFO 11-22 22:57:21 selector.py:53] Using XFormers backend.
+[1;36m(VllmWorkerProcess pid=406497)[0;0m INFO 11-22 22:57:21 selector.py:153] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
+[1;36m(VllmWorkerProcess pid=406497)[0;0m INFO 11-22 22:57:21 selector.py:53] Using XFormers backend.
+INFO 11-22 22:59:31 model_runner.py:255] Loading model weights took 7.2255 GB
+[1;36m(VllmWorkerProcess pid=406497)[0;0m INFO 11-22 23:00:48 model_runner.py:255] Loading model weights took 7.2255 GB
+INFO 11-22 23:00:52 distributed_gpu_executor.py:56] # GPU blocks: 4212, # CPU blocks: 1024
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226] Exception in worker VllmWorkerProcess while processing method initialize_cache: CUDA out of memory. Tried to allocate 528.00 MiB. GPU  has a total capacity of 31.73 GiB of which 143.44 MiB is free. Process 366740 has 17.62 GiB memory in use. Including non-PyTorch memory, this process has 13.97 GiB memory in use. Of the allocated memory 13.43 GiB is allocated by PyTorch, and 24.99 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables), Traceback (most recent call last):
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/executor/multiproc_worker_utils.py", line 223, in _run_worker_process
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]     output = executor(*args, **kwargs)
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/worker.py", line 213, in initialize_cache
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]     self._init_cache_engine()
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/worker.py", line 218, in _init_cache_engine
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]     self.cache_engine = [
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/worker.py", line 219, in <listcomp>
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]     CacheEngine(self.cache_config, self.model_config,
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/cache_engine.py", line 66, in __init__
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]     self.gpu_cache = self._allocate_kv_cache(
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/cache_engine.py", line 85, in _allocate_kv_cache
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226]     torch.zeros(kv_cache_shape,
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226] torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 528.00 MiB. GPU  has a total capacity of 31.73 GiB of which 143.44 MiB is free. Process 366740 has 17.62 GiB memory in use. Including non-PyTorch memory, this process has 13.97 GiB memory in use. Of the allocated memory 13.43 GiB is allocated by PyTorch, and 24.99 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[1;36m(VllmWorkerProcess pid=406497)[0;0m ERROR 11-22 23:00:52 multiproc_worker_utils.py:226] 
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/lixy/RAG/run.py", line 177, in <module>
+[rank0]:     llm = ChatLLM(qwen7)
+[rank0]:   File "/home/lixy/RAG/vllm_model.py", line 54, in __init__
+[rank0]:     self.model = LLM(model=model_path,
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/entrypoints/llm.py", line 149, in __init__
+[rank0]:     self.llm_engine = LLMEngine.from_engine_args(
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/engine/llm_engine.py", line 414, in from_engine_args
+[rank0]:     engine = cls(
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/engine/llm_engine.py", line 256, in __init__
+[rank0]:     self._initialize_kv_caches()
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/engine/llm_engine.py", line 366, in _initialize_kv_caches
+[rank0]:     self.model_executor.initialize_cache(num_gpu_blocks, num_cpu_blocks)
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/executor/distributed_gpu_executor.py", line 62, in initialize_cache
+[rank0]:     self._run_workers("initialize_cache",
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/executor/multiproc_gpu_executor.py", line 130, in _run_workers
+[rank0]:     driver_worker_output = driver_worker_method(*args, **kwargs)
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/worker.py", line 213, in initialize_cache
+[rank0]:     self._init_cache_engine()
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/worker.py", line 218, in _init_cache_engine
+[rank0]:     self.cache_engine = [
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/worker.py", line 219, in <listcomp>
+[rank0]:     CacheEngine(self.cache_config, self.model_config,
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/cache_engine.py", line 66, in __init__
+[rank0]:     self.gpu_cache = self._allocate_kv_cache(
+[rank0]:   File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/vllm/worker/cache_engine.py", line 85, in _allocate_kv_cache
+[rank0]:     torch.zeros(kv_cache_shape,
+[rank0]: torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 528.00 MiB. GPU 
+INFO 11-22 23:00:52 multiproc_worker_utils.py:123] Killing local vLLM worker processes
+Fatal Python error: _enter_buffered_busy: could not acquire lock for <_io.BufferedWriter name='<stdout>'> at interpreter shutdown, possibly due to daemon threads
+Python runtime state: finalizing (tstate=0x55ddaddafa90)
+
+Current thread 0x00007f5d175c9340 (most recent call first):
+<no Python frame>
+/home/lixy/anaconda3/envs/llm/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 2 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+Aborted (core dumped)
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:7: LangChainDeprecationWarning: Importing HuggingFaceEmbeddings from langchain.embeddings is deprecated. Please replace deprecated imports:
+
+>> from langchain.embeddings import HuggingFaceEmbeddings
+
+with new imports of:
+
+>> from langchain_community.embeddings import HuggingFaceEmbeddings
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+/home/lixy/RAG/retrievers/bm25_retriever.py:5: LangChainDeprecationWarning: Importing BM25Retriever from langchain.retrievers is deprecated. Please replace deprecated imports:
+
+>> from langchain.retrievers import BM25Retriever
+
+with new imports of:
+
+>> from langchain_community.retrievers import BM25Retriever
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.retrievers import BM25Retriever
+/home/lixy/RAG/retrievers/faiss_retriever.py:23: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
+  self.embeddings  = HuggingFaceEmbeddings(
+No sentence-transformers model found with name ./pre_train_model/m3e-large. Creating a new one with mean pooling.
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.549 seconds.
+Prefix dict has been built successfully.
+1220
+8178
+8785
+data load ok
+faissretriever load ok
+bm25 load ok
+tfidf load ok
+INFO 11-23 10:37:13 config.py:1350] Downcasting torch.float32 to torch.float16.
+INFO 11-23 10:37:13 config.py:698] Defaulting to use mp for distributed inference
+INFO 11-23 10:37:13 llm_engine.py:169] Initializing an LLM engine (v0.5.1) with config: model='/home/lixy/.cache/modelscope/hub/qwen/Qwen-7B-Chat', speculative_config=None, tokenizer='/home/lixy/.cache/modelscope/hub/qwen/Qwen-7B-Chat', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, rope_scaling=None, rope_theta=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.float16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=2, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None), seed=0, served_model_name=/home/lixy/.cache/modelscope/hub/qwen/Qwen-7B-Chat, use_v2_block_manager=False, enable_prefix_caching=False)
+WARNING 11-23 10:37:14 tokenizer.py:126] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+INFO 11-23 10:37:14 selector.py:153] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
+INFO 11-23 10:37:14 selector.py:53] Using XFormers backend.
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/run.py:10: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/langchain/__init__.py:30: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import Chroma
+
+with new imports of:
+
+>> from langchain_community.vectorstores import Chroma
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:6: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import Chroma,FAISS
+/home/lixy/RAG/retrievers/faiss_retriever.py:7: LangChainDeprecationWarning: Importing HuggingFaceEmbeddings from langchain.embeddings is deprecated. Please replace deprecated imports:
+
+>> from langchain.embeddings import HuggingFaceEmbeddings
+
+with new imports of:
+
+>> from langchain_community.embeddings import HuggingFaceEmbeddings
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+/home/lixy/RAG/retrievers/bm25_retriever.py:5: LangChainDeprecationWarning: Importing BM25Retriever from langchain.retrievers is deprecated. Please replace deprecated imports:
+
+>> from langchain.retrievers import BM25Retriever
+
+with new imports of:
+
+>> from langchain_community.retrievers import BM25Retriever
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.retrievers import BM25Retriever
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:17 selector.py:153] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:17 selector.py:53] Using XFormers backend.
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:18 multiproc_worker_utils.py:215] Worker ready; awaiting tasks
+INFO 11-23 10:37:18 utils.py:741] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:18 utils.py:741] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:18 pynccl.py:63] vLLM is using nccl==2.20.5
+INFO 11-23 10:37:18 pynccl.py:63] vLLM is using nccl==2.20.5
+INFO 11-23 10:37:18 custom_all_reduce_utils.py:232] reading GPU P2P access cache from /home/lixy/.config/vllm/gpu_p2p_access_cache_for_2,3.json
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:18 custom_all_reduce_utils.py:232] reading GPU P2P access cache from /home/lixy/.config/vllm/gpu_p2p_access_cache_for_2,3.json
+INFO 11-23 10:37:19 selector.py:153] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
+INFO 11-23 10:37:19 selector.py:53] Using XFormers backend.
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:19 selector.py:153] Cannot use FlashAttention-2 backend for Volta and Turing GPUs.
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:19 selector.py:53] Using XFormers backend.
+INFO 11-23 10:37:22 model_runner.py:255] Loading model weights took 7.2255 GB
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:27 model_runner.py:255] Loading model weights took 7.2255 GB
+INFO 11-23 10:37:29 distributed_gpu_executor.py:56] # GPU blocks: 4212, # CPU blocks: 1024
+INFO 11-23 10:37:31 model_runner.py:924] Capturing the model for CUDA graphs. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 11-23 10:37:31 model_runner.py:928] CUDA graphs can take additional 1~3 GiB memory per GPU. If you are running out of memory, consider decreasing `gpu_memory_utilization` or enforcing eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:31 model_runner.py:924] Capturing the model for CUDA graphs. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:37:31 model_runner.py:928] CUDA graphs can take additional 1~3 GiB memory per GPU. If you are running out of memory, consider decreasing `gpu_memory_utilization` or enforcing eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:38:00 custom_all_reduce.py:219] Registering 2275 cuda graph addresses
+INFO 11-23 10:38:00 custom_all_reduce.py:219] Registering 2275 cuda graph addresses
+INFO 11-23 10:38:00 model_runner.py:1117] Graph capturing finished in 29 secs.
+[1;36m(VllmWorkerProcess pid=1372915)[0;0m INFO 11-23 10:38:00 model_runner.py:1117] Graph capturing finished in 28 secs.
+/home/lixy/RAG/retrievers/bm25_retriever.py:39: LangChainDeprecationWarning: The method `BaseRetriever.get_relevant_documents` was deprecated in langchain-core 0.1.46 and will be removed in 1.0. Use :meth:`~invoke` instead.
+  ans_docs = self.retriever.get_relevant_documents(query)
+llm qwen load ok
+rerank model load ok
+103
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.57it/s, est. speed input: 3394.97 toks/s, output: 14.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.57it/s, est. speed input: 3394.97 toks/s, output: 14.16 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s, est. speed input: 1293.46 toks/s, output: 32.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s, est. speed input: 1293.46 toks/s, output: 32.11 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.03s/it, est. speed input: 1059.28 toks/s, output: 36.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.03s/it, est. speed input: 1059.28 toks/s, output: 36.48 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.34s/it, est. speed input: 478.32 toks/s, output: 12.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.34s/it, est. speed input: 478.32 toks/s, output: 12.37 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.14s/it, est. speed input: 834.04 toks/s, output: 19.31 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.14s/it, est. speed input: 834.04 toks/s, output: 19.31 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.35s/it, est. speed input: 1124.00 toks/s, output: 28.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.35s/it, est. speed input: 1124.00 toks/s, output: 28.95 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it, est. speed input: 1091.43 toks/s, output: 37.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it, est. speed input: 1091.43 toks/s, output: 37.94 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.52s/it, est. speed input: 382.08 toks/s, output: 41.57 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.52s/it, est. speed input: 382.08 toks/s, output: 41.57 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.58s/it, est. speed input: 291.52 toks/s, output: 39.82 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.58s/it, est. speed input: 291.52 toks/s, output: 39.82 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.08s/it, est. speed input: 1055.36 toks/s, output: 35.51 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.08s/it, est. speed input: 1055.36 toks/s, output: 35.51 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.47s/it, est. speed input: 379.60 toks/s, output: 36.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.47s/it, est. speed input: 379.60 toks/s, output: 36.94 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.53s/it, est. speed input: 410.04 toks/s, output: 36.68 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.53s/it, est. speed input: 410.04 toks/s, output: 36.68 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 1474.30 toks/s, output: 38.34 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 1474.30 toks/s, output: 38.34 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it, est. speed input: 893.74 toks/s, output: 43.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it, est. speed input: 893.74 toks/s, output: 43.14 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.41s/it, est. speed input: 311.12 toks/s, output: 23.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.41s/it, est. speed input: 311.12 toks/s, output: 23.36 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s, est. speed input: 3277.27 toks/s, output: 24.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s, est. speed input: 3277.27 toks/s, output: 24.89 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.16s/it, est. speed input: 764.25 toks/s, output: 26.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.16s/it, est. speed input: 764.25 toks/s, output: 26.92 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.08it/s, est. speed input: 1742.30 toks/s, output: 18.32 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.08it/s, est. speed input: 1742.30 toks/s, output: 18.32 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 920.54 toks/s, output: 38.31 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it, est. speed input: 920.54 toks/s, output: 38.31 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.95s/it, est. speed input: 980.83 toks/s, output: 39.03 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.95s/it, est. speed input: 980.83 toks/s, output: 39.03 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.95s/it, est. speed input: 584.23 toks/s, output: 27.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.95s/it, est. speed input: 584.23 toks/s, output: 27.84 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 2312.06 toks/s, output: 22.52 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 2312.06 toks/s, output: 22.52 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.97s/it, est. speed input: 842.98 toks/s, output: 41.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.97s/it, est. speed input: 842.98 toks/s, output: 41.06 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.87s/it, est. speed input: 966.93 toks/s, output: 31.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.87s/it, est. speed input: 966.93 toks/s, output: 31.50 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it, est. speed input: 1473.65 toks/s, output: 36.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it, est. speed input: 1473.65 toks/s, output: 36.84 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it, est. speed input: 1027.28 toks/s, output: 40.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it, est. speed input: 1027.28 toks/s, output: 40.25 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.61s/it, est. speed input: 1087.97 toks/s, output: 39.67 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.61s/it, est. speed input: 1087.97 toks/s, output: 39.67 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.67s/it, est. speed input: 1170.18 toks/s, output: 38.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.67s/it, est. speed input: 1170.18 toks/s, output: 38.37 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.91s/it, est. speed input: 806.07 toks/s, output: 42.45 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.91s/it, est. speed input: 806.07 toks/s, output: 42.45 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.08it/s, est. speed input: 1463.13 toks/s, output: 39.86 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.08it/s, est. speed input: 1463.13 toks/s, output: 39.86 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.70s/it, est. speed input: 1485.52 toks/s, output: 34.11 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.70s/it, est. speed input: 1485.52 toks/s, output: 34.11 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.40s/it, est. speed input: 1405.08 toks/s, output: 37.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.40s/it, est. speed input: 1405.08 toks/s, output: 37.14 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it, est. speed input: 1396.38 toks/s, output: 15.98 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.31s/it, est. speed input: 1396.38 toks/s, output: 15.98 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.96s/it, est. speed input: 1301.78 toks/s, output: 16.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.96s/it, est. speed input: 1301.78 toks/s, output: 16.87 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.27s/it, est. speed input: 1226.77 toks/s, output: 40.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.27s/it, est. speed input: 1226.77 toks/s, output: 40.89 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 1592.59 toks/s, output: 29.88 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 1592.59 toks/s, output: 29.88 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.96it/s, est. speed input: 2672.99 toks/s, output: 33.34 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.96it/s, est. speed input: 2672.99 toks/s, output: 33.34 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.15s/it, est. speed input: 255.09 toks/s, output: 10.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:08<00:00,  8.15s/it, est. speed input: 255.09 toks/s, output: 10.06 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.41s/it, est. speed input: 924.62 toks/s, output: 31.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.41s/it, est. speed input: 924.62 toks/s, output: 31.58 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.38s/it, est. speed input: 941.68 toks/s, output: 37.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.38s/it, est. speed input: 941.68 toks/s, output: 37.77 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 1925.94 toks/s, output: 32.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 1925.94 toks/s, output: 32.02 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.19s/it, est. speed input: 239.06 toks/s, output: 36.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.19s/it, est. speed input: 239.06 toks/s, output: 36.26 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.07s/it, est. speed input: 1545.94 toks/s, output: 29.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.07s/it, est. speed input: 1545.94 toks/s, output: 29.87 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 1829.27 toks/s, output: 34.67 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 1829.27 toks/s, output: 34.67 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.39s/it, est. speed input: 1061.81 toks/s, output: 39.62 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.39s/it, est. speed input: 1061.81 toks/s, output: 39.62 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 1720.58 toks/s, output: 28.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.16it/s, est. speed input: 1720.58 toks/s, output: 28.95 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.70s/it, est. speed input: 636.04 toks/s, output: 7.29 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.70s/it, est. speed input: 636.04 toks/s, output: 7.29 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 2534.79 toks/s, output: 30.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.12it/s, est. speed input: 2534.79 toks/s, output: 30.27 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.54s/it, est. speed input: 350.41 toks/s, output: 36.49 toks/s]Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.54s/it, est. speed input: 350.41 toks/s, output: 36.49 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.45it/s, est. speed input: 3104.84 toks/s, output: 26.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.44it/s, est. speed input: 3104.84 toks/s, output: 26.02 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.09it/s, est. speed input: 2857.50 toks/s, output: 27.36 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.09it/s, est. speed input: 2857.50 toks/s, output: 27.36 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.31s/it, est. speed input: 994.30 toks/s, output: 21.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.31s/it, est. speed input: 994.30 toks/s, output: 21.20 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.61s/it, est. speed input: 949.28 toks/s, output: 8.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.61s/it, est. speed input: 949.28 toks/s, output: 8.69 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 1821.75 toks/s, output: 10.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.00it/s, est. speed input: 1821.75 toks/s, output: 10.01 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.39s/it, est. speed input: 1097.75 toks/s, output: 41.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.39s/it, est. speed input: 1097.75 toks/s, output: 41.72 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.09s/it, est. speed input: 1766.14 toks/s, output: 34.83 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.09s/it, est. speed input: 1766.14 toks/s, output: 34.83 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 2550.63 toks/s, output: 21.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.11it/s, est. speed input: 2550.63 toks/s, output: 21.08 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.00s/it, est. speed input: 2227.45 toks/s, output: 31.93 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.00s/it, est. speed input: 2227.45 toks/s, output: 31.93 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 2157.28 toks/s, output: 32.15 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 2157.28 toks/s, output: 32.15 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.75it/s, est. speed input: 3055.07 toks/s, output: 28.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.75it/s, est. speed input: 3055.07 toks/s, output: 28.06 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.14it/s, est. speed input: 5072.55 toks/s, output: 15.71 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  3.14it/s, est. speed input: 5072.55 toks/s, output: 15.71 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.59it/s, est. speed input: 2874.05 toks/s, output: 30.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.59it/s, est. speed input: 2874.05 toks/s, output: 30.17 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.35it/s, est. speed input: 2858.50 toks/s, output: 28.37 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.35it/s, est. speed input: 2858.50 toks/s, output: 28.37 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.35s/it, est. speed input: 631.27 toks/s, output: 30.79 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.35s/it, est. speed input: 631.27 toks/s, output: 30.79 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.47s/it, est. speed input: 940.05 toks/s, output: 37.26 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.47s/it, est. speed input: 940.05 toks/s, output: 37.26 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.13s/it, est. speed input: 552.37 toks/s, output: 39.66 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.13s/it, est. speed input: 552.37 toks/s, output: 39.66 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s, est. speed input: 2493.93 toks/s, output: 31.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.15it/s, est. speed input: 2493.93 toks/s, output: 31.00 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 2252.62 toks/s, output: 33.81 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 2252.62 toks/s, output: 33.81 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 2589.03 toks/s, output: 28.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.24it/s, est. speed input: 2589.03 toks/s, output: 28.63 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 1727.04 toks/s, output: 31.56 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 1727.04 toks/s, output: 31.56 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 1081.98 toks/s, output: 38.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 1081.98 toks/s, output: 38.87 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 1800.43 toks/s, output: 36.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s, est. speed input: 1800.43 toks/s, output: 36.58 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 1897.13 toks/s, output: 33.96 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 1897.13 toks/s, output: 33.96 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.23s/it, est. speed input: 1592.41 toks/s, output: 22.01 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.23s/it, est. speed input: 1592.41 toks/s, output: 22.01 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 1543.70 toks/s, output: 36.94 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it, est. speed input: 1543.70 toks/s, output: 36.94 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.59s/it, est. speed input: 758.63 toks/s, output: 18.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.59s/it, est. speed input: 758.63 toks/s, output: 18.50 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.30s/it, est. speed input: 1020.57 toks/s, output: 35.63 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.30s/it, est. speed input: 1020.57 toks/s, output: 35.63 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.63it/s, est. speed input: 2875.71 toks/s, output: 24.38 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.62it/s, est. speed input: 2875.71 toks/s, output: 24.38 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 1735.23 toks/s, output: 36.81 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.03s/it, est. speed input: 1735.23 toks/s, output: 36.81 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.49s/it, est. speed input: 1482.73 toks/s, output: 34.79 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.49s/it, est. speed input: 1482.73 toks/s, output: 34.79 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.40it/s, est. speed input: 2903.01 toks/s, output: 26.59 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.40it/s, est. speed input: 2903.01 toks/s, output: 26.59 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.73s/it, est. speed input: 940.26 toks/s, output: 39.85 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.73s/it, est. speed input: 940.26 toks/s, output: 39.85 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 2575.27 toks/s, output: 28.81 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 2575.27 toks/s, output: 28.81 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.27it/s, est. speed input: 2244.17 toks/s, output: 19.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.27it/s, est. speed input: 2244.17 toks/s, output: 19.08 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.33s/it, est. speed input: 1427.53 toks/s, output: 35.41 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.33s/it, est. speed input: 1427.53 toks/s, output: 35.41 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 2018.62 toks/s, output: 29.91 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.10s/it, est. speed input: 2018.62 toks/s, output: 29.91 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s, est. speed input: 1672.35 toks/s, output: 25.86 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s, est. speed input: 1672.35 toks/s, output: 25.86 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 1823.66 toks/s, output: 37.57 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s, est. speed input: 1823.66 toks/s, output: 37.57 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 1586.47 toks/s, output: 29.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.41s/it, est. speed input: 1586.47 toks/s, output: 29.76 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.63s/it, est. speed input: 201.70 toks/s, output: 30.45 toks/s]Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.63s/it, est. speed input: 201.70 toks/s, output: 30.45 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it, est. speed input: 1163.49 toks/s, output: 41.61 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it, est. speed input: 1163.49 toks/s, output: 41.61 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.41it/s, est. speed input: 3173.00 toks/s, output: 23.97 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.41it/s, est. speed input: 3173.00 toks/s, output: 23.97 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it, est. speed input: 1754.01 toks/s, output: 33.53 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.37s/it, est. speed input: 1754.01 toks/s, output: 33.53 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.69it/s, est. speed input: 3040.74 toks/s, output: 15.25 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.69it/s, est. speed input: 3040.74 toks/s, output: 15.25 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.85s/it, est. speed input: 724.01 toks/s, output: 16.85 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.85s/it, est. speed input: 724.01 toks/s, output: 16.85 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.75s/it, est. speed input: 862.52 toks/s, output: 30.54 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.75s/it, est. speed input: 862.52 toks/s, output: 30.54 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.54s/it, est. speed input: 734.31 toks/s, output: 36.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.54s/it, est. speed input: 734.31 toks/s, output: 36.16 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.84s/it, est. speed input: 990.13 toks/s, output: 34.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.84s/it, est. speed input: 990.13 toks/s, output: 34.24 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s, est. speed input: 2724.69 toks/s, output: 31.28 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s, est. speed input: 2724.69 toks/s, output: 31.28 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 2060.00 toks/s, output: 17.73 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it, est. speed input: 2060.00 toks/s, output: 17.73 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.00s/it, est. speed input: 1503.36 toks/s, output: 38.83 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.00s/it, est. speed input: 1503.36 toks/s, output: 38.83 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.35s/it, est. speed input: 1011.19 toks/s, output: 42.87 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.35s/it, est. speed input: 1011.19 toks/s, output: 42.87 toks/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.81it/s, est. speed input: 3414.85 toks/s, output: 27.17 toks/s]Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.81it/s, est. speed input: 3414.85 toks/s, output: 27.17 toks/s]
+cost time: 18.066666666666666
+INFO 11-23 10:42:03 multiproc_worker_utils.py:123] Killing local vLLM worker processes
+[rank0]:[W CudaIPCTypes.cpp:16] Producer process has been terminated before all shared CUDA tensors released. See Note [Sharing CUDA tensors]
+/home/lixy/anaconda3/envs/llm/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 2 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Downloading 'config.json' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/config.json.adf91b4a4ddc2646d677d6b1f5d06111b88fda59.incomplete'
+Downloading 'README.md' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/README.md.0963c198257a0607c4d2def66a84aec172240afd.incomplete'
+Downloading 'LICENSE' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/LICENSE.5be33384d19169a98eee863ff09c74eb32e37696.incomplete'
+Downloading 'generation_config.json' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/generation_config.json.0eb3c536657dcd12626e09eca4b6198c0cbcde1e.incomplete'
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/config.json
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/README.md
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/LICENSE
+Downloading 'model-00001-of-00004.safetensors' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/model-00001-of-00004.safetensors.9e8f7873d7c4c74b8883db207a08bf8a783ec8c26da6b3d660a0929048ce6422.incomplete'
+Downloading 'model-00002-of-00004.safetensors' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/model-00002-of-00004.safetensors.e573fdaf3eba785c4b31b8858288f762f3541f09d75b53dfb1ae4d8ee5011d65.incomplete'
+Downloading 'merges.txt' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/merges.txt.20024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0.incomplete'
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/generation_config.json
+Downloading 'model-00003-of-00004.safetensors' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/model-00003-of-00004.safetensors.1d7cd36508251baa069a894f6ee98da5929e8b0788ff9c9faa7934ad102f845a.incomplete'
+Downloading 'model.safetensors.index.json' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/model.safetensors.index.json.6fc4ed7c09be58e2c354d9fa0329e7da67da0093.incomplete'
+Downloading '.gitattributes' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/.gitattributes.a6344aac8c09253b3b630fb776ae94478aa0275b.incomplete'
+Downloading 'model-00004-of-00004.safetensors' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/model-00004-of-00004.safetensors.189e7a297229937ec93912c940ef05019738c56ff0720c811fd083f5dd400dce.incomplete'
+Downloading 'tokenizer.json' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/tokenizer.json.33ea6c72ebb92a237fa2bdf26c5ff16592efcdae.incomplete'
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/model.safetensors.index.json
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/.gitattributes
+Fetching 14 files:   7%|▋         | 1/14 [00:01<00:16,  1.29s/it]Downloading 'vocab.json' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/vocab.json.4783fe10ac3adce15ac8f358ef5462739852c569.incomplete'
+Downloading 'tokenizer_config.json' to 'pre_train_model/Qwen1.5-7B-Chat/.cache/huggingface/download/tokenizer_config.json.ff55d7b9eb1384e5d4d7e75dc0f564c1a8833d6e.incomplete'
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/tokenizer_config.json
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/merges.txt
+Fetching 14 files:  43%|████▎     | 6/14 [00:02<00:02,  2.68it/s]Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/vocab.json
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/tokenizer.json
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/model-00004-of-00004.safetensors
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/model-00002-of-00004.safetensors
+Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/model-00001-of-00004.safetensors
+Fetching 14 files:  50%|█████     | 7/14 [03:04<04:17, 36.73s/it]Download complete. Moving file to pre_train_model/Qwen1.5-7B-Chat/model-00003-of-00004.safetensors
+Fetching 14 files:  64%|██████▍   | 9/14 [04:11<02:57, 35.52s/it]Fetching 14 files: 100%|██████████| 14/14 [04:11<00:00, 17.94s/it]
+/home/lixy/RAG/pre_train_model/Qwen1.5-7B-Chat
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Fetching 27 files:   0%|          | 0/27 [00:00<?, ?it/s]Downloading 'configuration_chatglm.py' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/configuration_chatglm.py.35600185f5a26951081de0f3a41a913eaf06af99.incomplete'
+Downloading 'model-00001-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00001-of-00007.safetensors.b1052386eac358a18add3d0f92521c85ab338979da8eeb08a6499555b857f80d.incomplete'
+Downloading 'model-00003-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00003-of-00007.safetensors.447d41b7c5e7b2558905c98733469aa9e132540c91e13c4cdd7bfc58b60cc650.incomplete'
+Downloading 'README.md' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/README.md.2be647008e0de7e35f35dc1863e389a2b82a6308.incomplete'
+Downloading 'config.json' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/config.json.37933c87f711fa0815a7712880bbf83eac4299c5.incomplete'
+Downloading 'model-00002-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00002-of-00007.safetensors.f88d7f69a3940711b87308eb20dd0544df22aff81134fa0d5160d3c859f5d321.incomplete'
+Downloading '.gitattributes' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/.gitattributes.a6344aac8c09253b3b630fb776ae94478aa0275b.incomplete'
+Downloading 'MODEL_LICENSE' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/MODEL_LICENSE.f35379578271e2e0af8480b14cc33f9525b501fe.incomplete'
+Download complete. Moving file to pre_train_model/chatglm3-6b/configuration_chatglm.py
+Download complete. Moving file to pre_train_model/chatglm3-6b/config.json
+Download complete. Moving file to pre_train_model/chatglm3-6b/README.md
+Download complete. Moving file to pre_train_model/chatglm3-6b/MODEL_LICENSE
+Download complete. Moving file to pre_train_model/chatglm3-6b/.gitattributes
+Fetching 27 files:   4%|▎         | 1/27 [00:00<00:19,  1.31it/s]Downloading 'model-00004-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00004-of-00007.safetensors.386305288e2bcc4a26fcffef433c94592d155bf36e365f054f63d3e6b55a1429.incomplete'
+Downloading 'model-00006-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00006-of-00007.safetensors.ef45bbd33d6d540d3d3523bb169b52b91b9e265176ab7efc6838233bc3b7e95d.incomplete'
+Downloading 'model-00005-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00005-of-00007.safetensors.6c304e2821774d649997d1f5ae5fa12afd4d1dc5fea2bf6e8b829405b81fa7f2.incomplete'
+Downloading 'model-00007-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00007-of-00007.safetensors.6eb545c6aa8a839c56a78b80331fcb4fa403341925f79fb6a761e2e847bf1e40.incomplete'
+Downloading 'model.safetensors.index.json' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model.safetensors.index.json.9af0a18f06cd3b286ebc328878e325808f9574f1.incomplete'
+Download complete. Moving file to pre_train_model/chatglm3-6b/model.safetensors.index.json
+Downloading 'modeling_chatglm.py' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/modeling_chatglm.py.8ab8b33536f099d0e29ecfa7c6d7c3845d058256.incomplete'
+Download complete. Moving file to pre_train_model/chatglm3-6b/modeling_chatglm.py
+Downloading 'pytorch_model-00001-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00001-of-00007.bin.4d5567466e89625dbd10e51c69a02982f233a10108cf232a379defdbb065ae0b.incomplete'
+Download complete. Moving file to pre_train_model/chatglm3-6b/model-00001-of-00007.safetensors
+Fetching 27 files:  22%|██▏       | 6/27 [01:51<06:49, 19.52s/it]Download complete. Moving file to pre_train_model/chatglm3-6b/model-00007-of-00007.safetensors
+Downloading 'pytorch_model-00002-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00002-of-00007.bin.4ad41534016ac4a2431fa2d4b08efbe28f963744135ec52b2ea13cc86730fa2a.incomplete'
+Downloading 'pytorch_model-00003-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00003-of-00007.bin.a2be9b17c332a8345e787953d4879caee4747ad4b263f013aa3c4654c94c3d24.incomplete'
+Download complete. Moving file to pre_train_model/chatglm3-6b/pytorch_model-00001-of-00007.bin
+Downloading 'pytorch_model-00004-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00004-of-00007.bin.b5526891e1b4c8edd2e3688df5156aa107e2140fe7e3f9d0d54f9cbe3b6ee3b5.incomplete'
+Download complete. Moving file to pre_train_model/chatglm3-6b/model-00006-of-00007.safetensors
+Downloading 'pytorch_model-00005-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00005-of-00007.bin.84bb18a476f74beaf4d941733bd1c475791eba799b228f78d0165de989cb7a40.incomplete'
+Download complete. Moving file to pre_train_model/chatglm3-6b/model-00004-of-00007.safetensors
+Downloading 'pytorch_model-00006-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00006-of-00007.bin.1181875a2dc30fba968d72d0fc4628b9a60d3866bf680eb14b9822b5b504830f.incomplete'
+Downloading 'pytorch_model-00007-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00007-of-00007.bin.1271b638dc0a88206d1c7a51bcaa862410eb56f3e59fd0068a96e96cb5e3f4f0.incomplete'
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:653: UserWarning: Not enough free disk space to download the file. The expected file size is: 1052.81 MB. The target location pre_train_model/chatglm3-6b/.cache/huggingface/download only has 0.00 MB free disk space.
+  warnings.warn(
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:653: UserWarning: Not enough free disk space to download the file. The expected file size is: 1052.81 MB. The target location pre_train_model/chatglm3-6b only has 0.00 MB free disk space.
+  warnings.warn(
+Downloading 'pytorch_model.bin.index.json' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model.bin.index.json.cd6a94a411934e8cc04e271f169a68754d14733d.incomplete'
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:653: UserWarning: Not enough free disk space to download the file. The expected file size is: 0.02 MB. The target location pre_train_model/chatglm3-6b/.cache/huggingface/download only has 0.00 MB free disk space.
+  warnings.warn(
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:653: UserWarning: Not enough free disk space to download the file. The expected file size is: 0.02 MB. The target location pre_train_model/chatglm3-6b only has 0.00 MB free disk space.
+  warnings.warn(
+Downloading 'quantization.py' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/quantization.py.af7a0534ceba49af286f9339da7546a06756d3a5.incomplete'
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:653: UserWarning: Not enough free disk space to download the file. The expected file size is: 0.01 MB. The target location pre_train_model/chatglm3-6b/.cache/huggingface/download only has 0.00 MB free disk space.
+  warnings.warn(
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:653: UserWarning: Not enough free disk space to download the file. The expected file size is: 0.01 MB. The target location pre_train_model/chatglm3-6b only has 0.00 MB free disk space.
+  warnings.warn(
+Downloading 'special_tokens_map.json' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/special_tokens_map.json.0967e/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Fetching 27 files:   0%|          | 0/27 [00:00<?, ?it/s]Downloading 'pytorch_model-00005-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00005-of-00007.bin.84bb18a476f74beaf4d941733bd1c475791eba799b228f78d0165de989cb7a40.incomplete' (resume from 978108416/1968299544)
+Downloading 'model-00005-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00005-of-00007.safetensors.6c304e2821774d649997d1f5ae5fa12afd4d1dc5fea2bf6e8b829405b81fa7f2.incomplete' (resume from 660602880/1968291920)
+Downloading 'pytorch_model-00004-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00004-of-00007.bin.b5526891e1b4c8edd2e3688df5156aa107e2140fe7e3f9d0d54f9cbe3b6ee3b5.incomplete' (resume from 1132462080/1815225998)
+Downloading 'pytorch_model-00006-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00006-of-00007.bin.1181875a2dc30fba968d72d0fc4628b9a60d3866bf680eb14b9822b5b504830f.incomplete' (resume from 283115520/1927415036)
+Downloading 'pytorch_model-00003-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00003-of-00007.bin.a2be9b17c332a8345e787953d4879caee4747ad4b263f013aa3c4654c94c3d24.incomplete' (resume from 985661440/1927415036)
+Downloading 'pytorch_model-00002-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00002-of-00007.bin.4ad41534016ac4a2431fa2d4b08efbe28f963744135ec52b2ea13cc86730fa2a.incomplete' (resume from 1121976320/1968299480)
+Downloading 'model-00002-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00002-of-00007.safetensors.f88d7f69a3940711b87308eb20dd0544df22aff81134fa0d5160d3c859f5d321.incomplete' (resume from 1806991360/1968291888)
+Downloading 'model-00003-of-00007.safetensors' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/model-00003-of-00007.safetensors.447d41b7c5e7b2558905c98733469aa9e132540c91e13c4cdd7bfc58b60cc650.incomplete' (resume from 1394606080/1927406936)
+Download complete. Moving file to pre_train_model/chatglm3-6b/model-00002-of-00007.safetensors
+Fetching 27 files:  26%|██▌       | 7/27 [00:11<00:33,  1.66s/it]Downloading 'pytorch_model-00007-of-00007.bin' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model-00007-of-00007.bin.1271b638dc0a88206d1c7a51bcaa862410eb56f3e59fd0068a96e96cb5e3f4f0.incomplete'
+Fetching 27 files:  26%|██▌       | 7/27 [00:26<01:15,  3.76s/it]
+Downloading 'pytorch_model.bin.index.json' to 'pre_train_model/chatglm3-6b/.cache/huggingface/download/pytorch_model.bin.index.json.cd6a94a411934e8cc04e271f169a68754d14733d.incomplete'
+Download complete. Moving file to pre_train_model/chatglm3-6b/pytorch_model.bin.index.json
+Download complete. Moving file to pre_train_model/chatglm3-6b/pytorch_model-00002-of-00007.bin
+Download complete. Moving file to pre_train_model/chatglm3-6b/pytorch_model-00005-of-00007.bin
+Download complete. Moving file to pre_train_model/chatglm3-6b/pytorch_model-00007-of-00007.bin
+Download complete. Moving file to pre_train_model/chatglm3-6b/model-00005-of-00007.safetensors
+Download complete. Moving file to pre_train_model/chatglm3-6b/pytorch_model-00006-of-00007.bin
+Traceback (most recent call last):
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/urllib3/response.py", line 748, in _error_catcher
+    yield
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/urllib3/response.py", line 894, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(27428913 bytes read, 505371943 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/requests/models.py", line 820, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/urllib3/response.py", line 1060, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/urllib3/response.py", line 977, in read
+    data = self._raw_read(amt)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/urllib3/response.py", line 902, in _raw_read
+    self._fp.close()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/contextlib.py", line 137, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/urllib3/response.py", line 772, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(27428913 bytes read, 505371943 more expected)', IncompleteRead(27428913 bytes read, 505371943 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/tqdm/contrib/concurrent.py", line 51, in _executor_map
+    return list(tqdm_class(ex.map(fn, *iterables, chunksize=chunksize), **kwargs))
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/_base.py", line 609, in result_iterator
+    yield fs.pop().result()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/_base.py", line 446, in result
+    return self.__get_result()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/_base.py", line 391, in __get_result
+    raise self._exception
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/_snapshot_download.py", line 267, in _inner_hf_hub_download
+    return hf_hub_download(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 842, in hf_hub_download
+    return _hf_hub_download_to_local_dir(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 1138, in _hf_hub_download_to_local_dir
+    _download_to_tmp_and_move(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 1545, in _download_to_tmp_and_move
+    http_get(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 454, in http_get
+    for chunk in r.iter_content(chunk_size=constants.DOWNLOAD_CHUNK_SIZE):
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/requests/models.py", line 822, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(27428913 bytes read, 505371943 more expected)', IncompleteRead(27428913 bytes read, 505371943 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lixy/anaconda3/envs/llm/bin/huggingface-cli", line 8, in <module>
+    sys.exit(main())
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/commands/huggingface_cli.py", line 57, in main
+    service.run()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/commands/download.py", line 153, in run
+    print(self._download())  # Print path to downloaded files
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/commands/download.py", line 187, in _download
+    return snapshot_download(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/_snapshot_download.py", line 293, in snapshot_download
+    thread_map(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/tqdm/contrib/concurrent.py", line 69, in thread_map
+    return _executor_map(ThreadPoolExecutor, fn, *iterables, **tqdm_kwargs)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/tqdm/contrib/concurrent.py", line 51, in _executor_map
+    return list(tqdm_class(ex.map(fn, *iterables, chunksize=chunksize), **kwargs))
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/_base.py", line 637, in __exit__
+    self.shutdown(wait=True)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/thread.py", line 235, in shutdown
+    t.join()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/threading.py", line 1053, in join
+    self._wait_for_tstate_lock()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/threading.py", line 1073, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+KeyboardInterrupt
+Exception ignored in: <module 'threading' from '/home/lixy/anaconda3/envs/llm/lib/python3.9/threading.py'>
+Traceback (most recent call last):
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/threading.py", line 1440, in _shutdown
+    atexit_call()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/thread.py", line 31, in _python_exit
+    t.join()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/threading.py", line 1053, in join
+    self._wait_for_tstate_lock()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/threading.py", line 1073, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+KeyboardInterrupt: 
+/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Downloading 'generation_config.json' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/generation_config.json.b1cd1e597fb36e91da8a30ba3b78c8d0fcd954d5.incomplete'
+Downloading 'config.json' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/config.json.83027d2b363f1f28de4c89f53c934df35d828037.incomplete'
+Downloading 'README.md' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/README.md.fa959eee2e9f063595ce886359c7c75c1dfc2070.incomplete'
+Downloading '.gitattributes' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/.gitattributes.a6344aac8c09253b3b630fb776ae94478aa0275b.incomplete'
+Downloading 'configuration_baichuan.py' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/configuration_baichuan.py.a260931dc119fdf9d06246f6fe3d17aba07a3135.incomplete'
+Downloading 'Baichuan2 模型社区许可协议.pdf' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/Baichuan2 模型社区许可协议.pdf.411d36a0687c9e93548a9ebfc0c3bdc513aeb874.incomplete'
+Downloading 'generation_utils.py' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/generation_utils.py.57716991333e2b8f6d1eabcefe32ef00f1d1dc84.incomplete'
+Downloading 'Community License for Baichuan2 Model.pdf' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/Community License for Baichuan2 Model.pdf.8f1aef49cfd60bd7d30793566e1ed32de8b6a350.incomplete'
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/config.json
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/generation_config.json
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/README.md
+Downloading 'modeling_baichuan.py' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/modeling_baichuan.py.a202cb858cff8b2501003998182e21d9c3648ab6.incomplete'
+Downloading 'pytorch_model.bin' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/pytorch_model.bin.594b540d36751fa3b199c609617deafc0329050937c0767fdfb2d38b72d8bec9.incomplete'
+Downloading 'quantizer.py' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/quantizer.py.239a2fbff0d92c688f43c0dd882c014a4b107bfa.incomplete'
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/configuration_baichuan.py
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/generation_utils.py
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/modeling_baichuan.py
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/Baichuan2 模型社区许可协议.pdf
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/quantizer.py
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/.gitattributes
+Fetching 15 files:   7%|▋         | 1/15 [00:01<00:19,  1.39s/it]Downloading 'special_tokens_map.json' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/special_tokens_map.json.5819ea25d7b1b6340063a0629c2143c44b0452da.incomplete'
+Downloading 'tokenization_baichuan.py' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/tokenization_baichuan.py.f8ed2d195075cf88bd64bf807510b334a92eb969.incomplete'
+Downloading 'tokenizer.model' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/tokenizer.model.79452955be6b419a65984273a9f08af86042e1c2a75ee3ba989cbf620a133cc2.incomplete'
+Downloading 'tokenizer_config.json' to 'pre_train_model/Baichuan2-7B-Chat/.cache/huggingface/download/tokenizer_config.json.b3e0f76befea64d7d98e0c3aa85e4c631feb270f.incomplete'
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/Community License for Baichuan2 Model.pdf
+Fetching 15 files:  20%|██        | 3/15 [00:01<00:05,  2.30it/s]Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/special_tokens_map.json
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/tokenization_baichuan.py
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/tokenizer_config.json
+Download complete. Moving file to pre_train_model/Baichuan2-7B-Chat/tokenizer.model
+Fetching 15 files:  60%|██████    | 9/15 [01:29<00:59,  9.95s/it]
+Traceback (most recent call last):
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/tqdm/contrib/concurrent.py", line 51, in _executor_map
+    return list(tqdm_class(ex.map(fn, *iterables, chunksize=chunksize), **kwargs))
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/_base.py", line 609, in result_iterator
+    yield fs.pop().result()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/_base.py", line 441, in result
+    self._condition.wait(timeout)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/threading.py", line 312, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lixy/anaconda3/envs/llm/bin/huggingface-cli", line 8, in <module>
+    sys.exit(main())
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/commands/huggingface_cli.py", line 57, in main
+    service.run()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/commands/download.py", line 153, in run
+    print(self._download())  # Print path to downloaded files
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/commands/download.py", line 187, in _download
+    return snapshot_download(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/huggingface_hub/_snapshot_download.py", line 293, in snapshot_download
+    thread_map(
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/tqdm/contrib/concurrent.py", line 69, in thread_map
+    return _executor_map(ThreadPoolExecutor, fn, *iterables, **tqdm_kwargs)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/site-packages/tqdm/contrib/concurrent.py", line 51, in _executor_map
+    return list(tqdm_class(ex.map(fn, *iterables, chunksize=chunksize), **kwargs))
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/_base.py", line 637, in __exit__
+    self.shutdown(wait=True)
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/concurrent/futures/thread.py", line 235, in shutdown
+    t.join()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/threading.py", line 1053, in join
+    self._wait_for_tstate_lock()
+  File "/home/lixy/anaconda3/envs/llm/lib/python3.9/threading.py", line 1073, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+KeyboardInterrupt

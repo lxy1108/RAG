@@ -1,0 +1,70 @@
+{
+    "sourceFile": "baichuan_generation_utils.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 13,
+            "patches": [
+                {
+                    "date": 1732417766587,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732417814387,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n             round.append(message)\n         if round:\n             rounds.append(round)\n         return system, rounds\n-\n+    raw tokens = \"\"\n     max_new_tokens = max_new_tokens or model.generation_config.max_new_tokens\n     max_input_tokens = model.config.model_max_length - max_new_tokens\n     system, rounds = _parse_messages(messages, split_role=\"user\")\n     system_tokens = tokenizer.encode(system)\n"
+                },
+                {
+                    "date": 1732417825952,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n             round.append(message)\n         if round:\n             rounds.append(round)\n         return system, rounds\n-    raw tokens = \"\"\n+    raw_tokens = \"\"\n     max_new_tokens = max_new_tokens or model.generation_config.max_new_tokens\n     max_input_tokens = model.config.model_max_length - max_new_tokens\n     system, rounds = _parse_messages(messages, split_role=\"user\")\n     system_tokens = tokenizer.encode(system)\n"
+                },
+                {
+                    "date": 1732417840137,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n     max_new_tokens = max_new_tokens or model.generation_config.max_new_tokens\n     max_input_tokens = model.config.model_max_length - max_new_tokens\n     system, rounds = _parse_messages(messages, split_role=\"user\")\n     system_tokens = tokenizer.encode(system)\n+    raw_tokens += system\n     max_history_tokens = max_input_tokens - len(system_tokens)\n \n     history_tokens = []\n     for round in rounds[::-1]:\n"
+                },
+                {
+                    "date": 1732418163652,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,8 +29,9 @@\n         round_tokens = []\n         for message in round:\n             if message[\"role\"] == \"user\":\n                 round_tokens.append(model.generation_config.user_token_id)\n+                raw_tokens += tokenizer._convert_id_to_token(model.generation_config.user_token_id)\n             else:\n                 round_tokens.append(model.generation_config.assistant_token_id)\n             round_tokens.extend(tokenizer.encode(message[\"content\"]))\n         if len(history_tokens) == 0 or len(history_tokens) + len(round_tokens) <= max_history_tokens:\n"
+                },
+                {
+                    "date": 1732418182613,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,8 +32,9 @@\n                 round_tokens.append(model.generation_config.user_token_id)\n                 raw_tokens += tokenizer._convert_id_to_token(model.generation_config.user_token_id)\n             else:\n                 round_tokens.append(model.generation_config.assistant_token_id)\n+                raw_tokens += tokenizer._convert_id_to_token(model.generation_config.assistant_token_id)\n             round_tokens.extend(tokenizer.encode(message[\"content\"]))\n         if len(history_tokens) == 0 or len(history_tokens) + len(round_tokens) <= max_history_tokens:\n             history_tokens = round_tokens + history_tokens  # concat left\n             if len(history_tokens) < max_history_tokens:\n"
+                },
+                {
+                    "date": 1732418194066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,8 +34,9 @@\n             else:\n                 round_tokens.append(model.generation_config.assistant_token_id)\n                 raw_tokens += tokenizer._convert_id_to_token(model.generation_config.assistant_token_id)\n             round_tokens.extend(tokenizer.encode(message[\"content\"]))\n+            raw_tokens += message[\"content\"])\n         if len(history_tokens) == 0 or len(history_tokens) + len(round_tokens) <= max_history_tokens:\n             history_tokens = round_tokens + history_tokens  # concat left\n             if len(history_tokens) < max_history_tokens:\n                 continue\n"
+                },
+                {
+                    "date": 1732418287586,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,17 +15,16 @@\n             round.append(message)\n         if round:\n             rounds.append(round)\n         return system, rounds\n-    raw_tokens = \"\"\n     max_new_tokens = max_new_tokens or model.generation_config.max_new_tokens\n     max_input_tokens = model.config.model_max_length - max_new_tokens\n     system, rounds = _parse_messages(messages, split_role=\"user\")\n     system_tokens = tokenizer.encode(system)\n-    raw_tokens += system\n     max_history_tokens = max_input_tokens - len(system_tokens)\n \n     history_tokens = []\n+    raw_history_tokens = \"\"\n     for round in rounds[::-1]:\n         round_tokens = []\n         for message in round:\n             if message[\"role\"] == \"user\":\n"
+                },
+                {
+                    "date": 1732418318894,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,19 +25,21 @@\n     history_tokens = []\n     raw_history_tokens = \"\"\n     for round in rounds[::-1]:\n         round_tokens = []\n+        raw_round_tokens = \"\"\n         for message in round:\n             if message[\"role\"] == \"user\":\n                 round_tokens.append(model.generation_config.user_token_id)\n-                raw_tokens += tokenizer._convert_id_to_token(model.generation_config.user_token_id)\n+                raw_round_tokens += tokenizer._convert_id_to_token(model.generation_config.user_token_id)\n             else:\n                 round_tokens.append(model.generation_config.assistant_token_id)\n-                raw_tokens += tokenizer._convert_id_to_token(model.generation_config.assistant_token_id)\n+                raw_round_tokens += tokenizer._convert_id_to_token(model.generation_config.assistant_token_id)\n             round_tokens.extend(tokenizer.encode(message[\"content\"]))\n-            raw_tokens += message[\"content\"])\n+            raw_round_tokens += message[\"content\"]\n         if len(history_tokens) == 0 or len(history_tokens) + len(round_tokens) <= max_history_tokens:\n             history_tokens = round_tokens + history_tokens  # concat left\n+            raw_history_tokens = raw_round_tokens + raw_history_tokens\n             if len(history_tokens) < max_history_tokens:\n                 continue\n         break\n \n"
+                },
+                {
+                    "date": 1732418331676,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,8 +43,9 @@\n                 continue\n         break\n \n     input_tokens = system_tokens + history_tokens\n+    raw_input_tokens = system + raw_history_tokens\n     if messages[-1][\"role\"] != \"assistant\":\n         input_tokens.append(model.generation_config.assistant_token_id)\n     input_tokens = input_tokens[-max_input_tokens:]  # truncate left\n     return torch.LongTensor([input_tokens]).to(model.device)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732418348528,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,6 +46,7 @@\n     input_tokens = system_tokens + history_tokens\n     raw_input_tokens = system + raw_history_tokens\n     if messages[-1][\"role\"] != \"assistant\":\n         input_tokens.append(model.generation_config.assistant_token_id)\n+        raw_input_tokens += tokenizer._convert_id_to_token(model.generation_config.assistant_token_id)\n     input_tokens = input_tokens[-max_input_tokens:]  # truncate left\n     return torch.LongTensor([input_tokens]).to(model.device)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732418363746,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n from typing import List\n+import torch\n \n def build_chat_input(model, tokenizer, messages: List[dict], max_new_tokens: int=0):\n     def _parse_messages(messages, split_role=\"user\"):\n         system, rounds = \"\", []\n@@ -48,5 +49,5 @@\n     if messages[-1][\"role\"] != \"assistant\":\n         input_tokens.append(model.generation_config.assistant_token_id)\n         raw_input_tokens += tokenizer._convert_id_to_token(model.generation_config.assistant_token_id)\n     input_tokens = input_tokens[-max_input_tokens:]  # truncate left\n-    return torch.LongTensor([input_tokens]).to(model.device)\n\\ No newline at end of file\n+    return raw_input_tokens, torch.LongTensor([input_tokens]).to(model.device)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732420953344,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n         if round:\n             rounds.append(round)\n         return system, rounds\n     max_new_tokens = max_new_tokens or model.generation_config.max_new_tokens\n-    max_input_tokens = model.config.model_max_length - max_new_tokens\n+    max_input_tokens = model.llm_engine.model_config.max_model_len - max_new_tokens\n     system, rounds = _parse_messages(messages, split_role=\"user\")\n     system_tokens = tokenizer.encode(system)\n     max_history_tokens = max_input_tokens - len(system_tokens)\n \n"
+                },
+                {
+                    "date": 1732421217575,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,5 +49,5 @@\n     if messages[-1][\"role\"] != \"assistant\":\n         input_tokens.append(model.generation_config.assistant_token_id)\n         raw_input_tokens += tokenizer._convert_id_to_token(model.generation_config.assistant_token_id)\n     input_tokens = input_tokens[-max_input_tokens:]  # truncate left\n-    return raw_input_tokens, torch.LongTensor([input_tokens]).to(model.device)\n\\ No newline at end of file\n+    return raw_input_tokens, torch.LongTensor([input_tokens])\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1732417766587,
+            "name": "Commit-0",
+            "content": "from typing import List\n\ndef build_chat_input(model, tokenizer, messages: List[dict], max_new_tokens: int=0):\n    def _parse_messages(messages, split_role=\"user\"):\n        system, rounds = \"\", []\n        round = []\n        for i, message in enumerate(messages):\n            if message[\"role\"] == \"system\":\n                assert i == 0\n                system = message[\"content\"]\n                continue\n            if message[\"role\"] == split_role and round:\n                rounds.append(round)\n                round = []\n            round.append(message)\n        if round:\n            rounds.append(round)\n        return system, rounds\n\n    max_new_tokens = max_new_tokens or model.generation_config.max_new_tokens\n    max_input_tokens = model.config.model_max_length - max_new_tokens\n    system, rounds = _parse_messages(messages, split_role=\"user\")\n    system_tokens = tokenizer.encode(system)\n    max_history_tokens = max_input_tokens - len(system_tokens)\n\n    history_tokens = []\n    for round in rounds[::-1]:\n        round_tokens = []\n        for message in round:\n            if message[\"role\"] == \"user\":\n                round_tokens.append(model.generation_config.user_token_id)\n            else:\n                round_tokens.append(model.generation_config.assistant_token_id)\n            round_tokens.extend(tokenizer.encode(message[\"content\"]))\n        if len(history_tokens) == 0 or len(history_tokens) + len(round_tokens) <= max_history_tokens:\n            history_tokens = round_tokens + history_tokens  # concat left\n            if len(history_tokens) < max_history_tokens:\n                continue\n        break\n\n    input_tokens = system_tokens + history_tokens\n    if messages[-1][\"role\"] != \"assistant\":\n        input_tokens.append(model.generation_config.assistant_token_id)\n    input_tokens = input_tokens[-max_input_tokens:]  # truncate left\n    return torch.LongTensor([input_tokens]).to(model.device)"
+        }
+    ]
+}

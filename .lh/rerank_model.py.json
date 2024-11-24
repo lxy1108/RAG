@@ -1,0 +1,22 @@
+{
+    "sourceFile": "rerank_model.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1732265568329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732265588725,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,8 @@\n from transformers import AutoModelForSequenceClassification, AutoTokenizer\n import os\n import torch\n \n-from retrievers.bm25_retriever import BM25\n-from retrievers.tfidf_retriever import TFIDF\n from pdf_parse import DataProcess\n from config import *\n \n os.environ[\"TOKENIZERS_PARALLELISM\"] = \"false\"\n"
+                }
+            ],
+            "date": 1732265568329,
+            "name": "Commit-0",
+            "content": "from transformers import AutoModelForSequenceClassification, AutoTokenizer\nimport os\nimport torch\n\nfrom retrievers.bm25_retriever import BM25\nfrom retrievers.tfidf_retriever import TFIDF\nfrom pdf_parse import DataProcess\nfrom config import *\n\nos.environ[\"TOKENIZERS_PARALLELISM\"] = \"false\"\n\nDEVICE = LLM_DEVICE\nDEVICE_ID = \"0\"\nCUDA_DEVICE = f\"{DEVICE}:{DEVICE_ID}\" if DEVICE_ID else DEVICE\n\n\n# 释放gpu上没有用到的显存以及显存碎片\ndef torch_gc():\n    if torch.cuda.is_available():\n        with torch.cuda.device(CUDA_DEVICE):\n            torch.cuda.empty_cache()\n            torch.cuda.ipc_collect()\n\n\n# 加载rerank模型\nclass reRankLLM(object):\n    def __init__(self, model_path, max_length = 512):\n        self.tokenizer = AutoTokenizer.from_pretrained(model_path)\n        self.model = AutoModelForSequenceClassification.from_pretrained(model_path)\n        self.model.eval()\n        self.model.half()\n        self.model.cuda()\n        # self.model.to(torch.device(\"cuda:1\"))\n        self.max_length = max_length\n\n    # 输入文档对，返回每一对(query, doc)的相关得分，并从大到小排序\n    def predict(self, query, docs):\n        pairs = [(query, doc.page_content) for doc in docs]\n        # inputs = self.tokenizer(pairs, padding=True, truncation=True, return_tensors='pt', max_length=self.max_length).to(\"cuda:1\")\n        inputs = self.tokenizer(pairs, padding=True, truncation=True, return_tensors='pt', max_length=self.max_length).to(\"cuda\")\n        with torch.no_grad():\n            scores = self.model(**inputs).logits\n        scores = scores.detach().cpu().clone().numpy()\n        response = [doc for score, doc in sorted(zip(scores, docs), reverse=True, key=lambda x:x[0])]\n        torch_gc()\n        return response\n\nif __name__ == \"__main__\":\n    bge_reranker_large = \"./pre_train_model/bge-reranker-large\"\n    rerank = reRankLLM(bge_reranker_large)\n"
+        }
+    ]
+}

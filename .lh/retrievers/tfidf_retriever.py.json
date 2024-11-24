@@ -1,0 +1,46 @@
+{
+    "sourceFile": "retrievers/tfidf_retriever.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1732158584703,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732161050376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n #!/usr/bin/env python\n # coding: utf-8\n \n \n-from langchain.retrievers import BM25Retriever\n+from langchain_community.retrievers import TFIDFRetriever\n from langchain.schema import Document\n from pdf_parse import DataProcess\n import jieba\n \n-class BM25(object):\n+class TFIDF(object):\n \n     # 遍历文档，首先做分词，然后把分词后的文档和全文文档建立索引和映射关系 \n     def __init__(self, documents):\n \n"
+                },
+                {
+                    "date": 1732161153596,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,16 +25,16 @@\n             words = line.split(\"\\t\")\n             full_docs.append(Document(page_content=words[0], metadata={\"id\": idx}))\n         self.documents = docs\n         self.full_documents = full_docs\n-        self.retriever = self._init_bm25()\n+        self.retriever = self._init_tfidf()\n \n     # 初始化BM25的知识库\n-    def _init_bm25(self):\n-        return BM25Retriever.from_documents(self.documents)\n+    def _init_tfidf(self):\n+        return TFIDFRetriever.from_documents(self.documents)\n \n     # 获得得分在topk的文档和分数\n-    def GetBM25TopK(self, query, topk):\n+    def GetTFIDFTopK(self, query, topk):\n         self.retriever.k = topk\n         query = \" \".join(jieba.cut_for_search(query))\n         ans_docs = self.retriever.get_relevant_documents(query)\n         ans = []\n@@ -55,7 +55,7 @@\n     dp.ParseOnePageWithRule(max_seq = 256)\n     dp.ParseOnePageWithRule(max_seq = 512)\n     print(len(dp.data))\n     data = dp.data\n-    bm25 = BM25(data)\n-    res = bm25.GetBM25TopK(\"座椅加热\", 6)\n+    tfidf = TFIDF(data)\n+    res = tfidf.GetTFIDFTopK(\"座椅加热\", 6)\n     print(res)\n"
+                },
+                {
+                    "date": 1732161242745,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n \n from langchain_community.retrievers import TFIDFRetriever\n from langchain.schema import Document\n-from pdf_parse import DataProcess\n+from .pdf_parse import DataProcess\n import jieba\n \n class TFIDF(object):\n \n"
+                },
+                {
+                    "date": 1732161259586,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n \n from langchain_community.retrievers import TFIDFRetriever\n from langchain.schema import Document\n-from .pdf_parse import DataProcess\n+from pdf_parse import DataProcess\n import jieba\n \n class TFIDF(object):\n \n"
+                },
+                {
+                    "date": 1732161359898,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n \n from langchain_community.retrievers import TFIDFRetriever\n from langchain.schema import Document\n-from pdf_parse import DataProcess\n+from ..pdf_parse import DataProcess\n import jieba\n \n class TFIDF(object):\n \n"
+                },
+                {
+                    "date": 1732161898991,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n \n from langchain_community.retrievers import TFIDFRetriever\n from langchain.schema import Document\n-from ..pdf_parse import DataProcess\n+from pdf_parse import DataProcess\n import jieba\n \n class TFIDF(object):\n \n"
+                },
+                {
+                    "date": 1732262700724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n     def _init_tfidf(self):\n         return TFIDFRetriever.from_documents(self.documents)\n \n     # 获得得分在topk的文档和分数\n-    def GetTFIDFTopK(self, query, topk):\n+    def GetTopK(self, query, topk):\n         self.retriever.k = topk\n         query = \" \".join(jieba.cut_for_search(query))\n         ans_docs = self.retriever.get_relevant_documents(query)\n         ans = []\n@@ -56,6 +56,6 @@\n     dp.ParseOnePageWithRule(max_seq = 512)\n     print(len(dp.data))\n     data = dp.data\n     tfidf = TFIDF(data)\n-    res = tfidf.GetTFIDFTopK(\"座椅加热\", 6)\n+    res = tfidf.GetTopK(\"座椅加热\", 6)\n     print(res)\n"
+                }
+            ],
+            "date": 1732158584703,
+            "name": "Commit-0",
+            "content": "#!/usr/bin/env python\n# coding: utf-8\n\n\nfrom langchain.retrievers import BM25Retriever\nfrom langchain.schema import Document\nfrom pdf_parse import DataProcess\nimport jieba\n\nclass BM25(object):\n\n    # 遍历文档，首先做分词，然后把分词后的文档和全文文档建立索引和映射关系 \n    def __init__(self, documents):\n\n        docs = []\n        full_docs = []\n        for idx, line in enumerate(documents):\n            line = line.strip(\"\\n\").strip()\n            if(len(line)<5):\n                continue\n            tokens = \" \".join(jieba.cut_for_search(line))\n            # docs.append(Document(page_content=tokens, metadata={\"id\": idx, \"cate\":words[1],\"pageid\":words[2]}))\n            docs.append(Document(page_content=tokens, metadata={\"id\": idx}))\n            # full_docs.append(Document(page_content=words[0], metadata={\"id\": idx, \"cate\":words[1], \"pageid\":words[2]}))\n            words = line.split(\"\\t\")\n            full_docs.append(Document(page_content=words[0], metadata={\"id\": idx}))\n        self.documents = docs\n        self.full_documents = full_docs\n        self.retriever = self._init_bm25()\n\n    # 初始化BM25的知识库\n    def _init_bm25(self):\n        return BM25Retriever.from_documents(self.documents)\n\n    # 获得得分在topk的文档和分数\n    def GetBM25TopK(self, query, topk):\n        self.retriever.k = topk\n        query = \" \".join(jieba.cut_for_search(query))\n        ans_docs = self.retriever.get_relevant_documents(query)\n        ans = []\n        for line in ans_docs:\n            ans.append(self.full_documents[line.metadata[\"id\"]])\n        return ans\n\nif __name__ == \"__main__\":\n\n    # bm2.5\n    dp =  DataProcess(pdf_path = \"./data/train_a.pdf\")\n    dp.ParseBlock(max_seq = 1024)\n    dp.ParseBlock(max_seq = 512)\n    print(len(dp.data))\n    dp.ParseAllPage(max_seq = 256)\n    dp.ParseAllPage(max_seq = 512)\n    print(len(dp.data))\n    dp.ParseOnePageWithRule(max_seq = 256)\n    dp.ParseOnePageWithRule(max_seq = 512)\n    print(len(dp.data))\n    data = dp.data\n    bm25 = BM25(data)\n    res = bm25.GetBM25TopK(\"座椅加热\", 6)\n    print(res)\n"
+        }
+    ]
+}
