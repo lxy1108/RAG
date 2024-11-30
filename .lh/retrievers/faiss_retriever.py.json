@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1732257699981,
@@ -52,6 +52,14 @@
                 {
                     "date": 1732268461063,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,10 @@\n base = \".\"\n model_dict = {\n         \"m3e\": base + \"/pre_train_model/m3e-large\",\n         \"bge\": base + \"/pre_train_model/bge-large-zh-embed\",\n-        \"gte\": base + \"/pre_train_model/gte-large-zh-embed\"\n+        \"gte\": base + \"/pre_train_model/gte-large-zh-embed\",\n+        \"bce\": base + \"/pre_train_model/bce-base-embed\"\n     }\n \n class FaissRetriever(object):\n     # 初始化文档块索引，然后插入faiss库\n"
+                },
+                {
+                    "date": 1732672106723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,9 @@\n \n class FaissRetriever(object):\n     # 初始化文档块索引，然后插入faiss库\n     def __init__(self, model_name, data):\n+        assert model_name in model_dict.keys(), \"Unknown dense retriever name: {model_name}\"\n         model_path = model_dict[model_name]\n         self.embeddings  = HuggingFaceEmbeddings(\n                                model_name = model_path,\n                                model_kwargs = {\"device\":\"cuda\"}\n"
+                },
+                {
+                    "date": 1732696333616,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n \n class FaissRetriever(object):\n     # 初始化文档块索引，然后插入faiss库\n     def __init__(self, model_name, data):\n-        assert model_name in model_dict.keys(), \"Unknown dense retriever name: {model_name}\"\n+        assert model_name in model_dict.keys(), f\"Unknown dense retriever name: {model_name}.\"\n         model_path = model_dict[model_name]\n         self.embeddings  = HuggingFaceEmbeddings(\n                                model_name = model_path,\n                                model_kwargs = {\"device\":\"cuda\"}\n"
                 }
             ],
             "date": 1732257699981,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 45,
+            "activePatchIndex": 47,
             "patches": [
                 {
                     "date": 1732076018952,
@@ -188,6 +188,14 @@
                 {
                     "date": 1732422712039,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -242,9 +242,10 @@\n     chatglm = \"pre_train_model/chatglm3-6b\"\n     baichuan = \"pre_train_model/Baichuan2-7B-Chat\"\n     qwen = \"pre_train_model/Qwen1.5-7B-Chat\"\n     start = time.time()\n-    llm = Baichuan(baichuan)\n+    # llm = Baichuan(baichuan)\n+    llm = ChatGLM(qwen)\n     test = [\"吉利汽车座椅按摩\",\"吉利汽车语音组手唤醒\",\"自动驾驶功能介绍\"]\n     generated_text = llm.infer(test)\n     print(generated_text)\n     end = time.time()\n"
+                },
+                {
+                    "date": 1732431064437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -103,9 +103,9 @@\n            batch_response.append(output_str)\n        torch_gc()\n        return batch_response\n \n-class ChatGLM(object):\n+class ChatLLM(object):\n \n     def __init__(self, model_path):\n        self.tokenizer = AutoTokenizer.from_pretrained(\n                         model_path,\n"
+                },
+                {
+                    "date": 1732431075467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -243,9 +243,9 @@\n     baichuan = \"pre_train_model/Baichuan2-7B-Chat\"\n     qwen = \"pre_train_model/Qwen1.5-7B-Chat\"\n     start = time.time()\n     # llm = Baichuan(baichuan)\n-    llm = ChatGLM(qwen)\n+    llm = ChatLLM(qwen)\n     test = [\"吉利汽车座椅按摩\",\"吉利汽车语音组手唤醒\",\"自动驾驶功能介绍\"]\n     generated_text = llm.infer(test)\n     print(generated_text)\n     end = time.time()\n"
                 }
             ],
             "date": 1732076018952,

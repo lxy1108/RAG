@@ -3,11 +3,31 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1732285862182,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732695349022,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,5 @@\n export CUDA_VISIBLE_DEVICES=2,3\n python run.py\n+-- dense_retriever_lists m3e \\\n+--recursive_answer\n+\n"
+                },
+                {
+                    "date": 1732695360265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n export CUDA_VISIBLE_DEVICES=2,3\n python run.py\n--- dense_retriever_lists m3e \\\n+--dense_retriever_lists m3e \\\n --recursive_answer\n \n"
+                },
+                {
+                    "date": 1732696578081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n export CUDA_VISIBLE_DEVICES=2,3\n-python run.py\n---dense_retriever_lists m3e \\\n---recursive_answer\n+python -u run.py \\\n+    --dense_retriever_lists m3e \\\n+    --recursive_answer\n \n"
+                },
+                {
+                    "date": 1732879703498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,9 @@\n export CUDA_VISIBLE_DEVICES=2,3\n python -u run.py \\\n     --dense_retriever_lists m3e \\\n-    --recursive_answer\n+    --recursive_answer \\\n+    --rephrase_context \\\n+    --rephrase_before_retrieve \\\n+    --answer_before_retrieve \\\n \n+\n"
+                },
+                {
+                    "date": 1732943080876,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-export CUDA_VISIBLE_DEVICES=2,3\n+# export CUDA_VISIBLE_DEVICES=2,3\n python -u run.py \\\n     --dense_retriever_lists m3e \\\n     --recursive_answer \\\n     --rephrase_context \\\n"
                 }
             ],
             "date": 1732285862181,
